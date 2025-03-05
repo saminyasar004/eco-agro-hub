@@ -108,10 +108,10 @@ const Products = () => {
                 {products.map((product) => (
                   <ProductCard
                     key={product.id}
+                    id={product.id}
                     title={product.title}
-                    description={product.description}
-                    price={product.price}
-                    imageSrc={product.imageSrc}
+                    category={product.category}
+                    image={product.imageSrc}
                   />
                 ))}
               </div>
@@ -124,10 +124,10 @@ const Products = () => {
                   {products.filter(p => p.category === category).map((product) => (
                     <ProductCard
                       key={product.id}
+                      id={product.id}
                       title={product.title}
-                      description={product.description}
-                      price={product.price}
-                      imageSrc={product.imageSrc}
+                      category={product.category}
+                      image={product.imageSrc}
                     />
                   ))}
                 </div>
