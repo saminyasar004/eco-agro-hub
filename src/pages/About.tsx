@@ -1,179 +1,266 @@
 
-import { Award, Users, GraduationCap, Target, Leaf, Handshake } from "lucide-react";
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/ui-custom/PageHeader";
 import SectionHeading from "../components/ui-custom/SectionHeading";
-import FeatureCard from "../components/ui-custom/FeatureCard";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { CheckCircle2, Users, Globe, Award, Target, Clock } from "lucide-react";
 
 const About = () => {
+  // Company values
+  const values = [
+    {
+      title: "Sustainability",
+      description: "We're committed to promoting environmentally responsible farming practices that preserve natural resources for future generations.",
+      icon: Globe
+    },
+    {
+      title: "Innovation",
+      description: "We continuously seek out and develop cutting-edge solutions that advance agricultural technology and efficiency.",
+      icon: Target
+    },
+    {
+      title: "Quality",
+      description: "We maintain the highest standards in all our products and services, ensuring reliable performance and results.",
+      icon: Award
+    },
+    {
+      title: "Integrity",
+      description: "We conduct our business with honesty, transparency, and respect for all stakeholders in the agricultural community.",
+      icon: CheckCircle2
+    }
+  ];
+
+  // Timeline items
+  const timelineItems = [
+    {
+      year: "1995",
+      title: "Company Founded",
+      description: "Argos Industries was established with a mission to support sustainable agriculture."
+    },
+    {
+      year: "2003",
+      title: "Research Center",
+      description: "Opened our first agricultural research and development center."
+    },
+    {
+      year: "2010",
+      title: "International Expansion",
+      description: "Expanded operations to serve customers across North America and Europe."
+    },
+    {
+      year: "2018",
+      title: "Sustainable Farming Initiative",
+      description: "Launched innovative program to promote and support eco-friendly farming practices."
+    },
+    {
+      year: "2023",
+      title: "Digital Agriculture",
+      description: "Introduced advanced digital farming solutions incorporating AI and IoT technology."
+    }
+  ];
+
   return (
     <Layout>
       <PageHeader 
         title="About Argos Industries"
-        subtitle="Leading the way in sustainable agricultural solutions"
-        backgroundImage="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=1920"
+        subtitle="Leading the way in sustainable agricultural solutions since 1995"
+        breadcrumbs={[
+          { label: "Home", link: "/" },
+          { label: "About", link: "/about" }
+        ]}
       />
       
-      {/* Our Story */}
-      <section className="section-padding bg-white">
+      {/* Company Introduction */}
+      <section className="section-padding">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
-              <SectionHeading 
-                title="Our Story"
-                subtitle="From humble beginnings to industry leader"
-              />
-              
-              <div className="space-y-4 reveal-on-scroll">
-                <p>
-                  Argos Industries Ltd was founded in 1995 with a simple mission: to create agricultural solutions that work in harmony with nature. What began as a small research initiative by a team of agricultural scientists and environmentally-conscious farmers has evolved into a leading provider of sustainable agricultural products and services.
-                </p>
-                <p>
-                  Over the past decades, we have expanded our reach and impact, developing innovative products that help farmers increase productivity while reducing environmental impact. Our approach combines cutting-edge research with practical applications, ensuring that our solutions meet the real-world needs of farmers.
-                </p>
-                <p>
-                  Today, Argos Industries operates globally, partnering with farmers, agricultural cooperatives, and research institutions to advance sustainable farming practices. Our commitment to environmental stewardship and agricultural excellence remains at the heart of everything we do.
-                </p>
-              </div>
+            <div className="reveal-on-scroll">
+              <h2 className="text-3xl font-display font-bold mb-6 text-argos-navy">Our Story</h2>
+              <p className="text-lg text-muted-foreground mb-6">
+                For over 25 years, Argos Industries has been at the forefront of agricultural innovation, 
+                providing farmers with the tools, knowledge, and support they need to thrive in an 
+                ever-changing landscape.
+              </p>
+              <p className="text-lg text-muted-foreground mb-6">
+                What began as a small family business has grown into a leading provider of agricultural 
+                solutions, serving customers across the globe with a commitment to quality, sustainability, 
+                and innovation.
+              </p>
+              <p className="text-lg text-muted-foreground">
+                Today, we continue to build on our legacy of excellence, developing new technologies and 
+                practices that help farmers increase yields, reduce environmental impact, and build 
+                resilient agricultural systems for the future.
+              </p>
             </div>
-            
-            <div className="order-1 lg:order-2 reveal-on-scroll">
+            <div className="rounded-xl overflow-hidden shadow-lg border border-border reveal-on-scroll">
               <img 
-                src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200" 
-                alt="Argos Industries History" 
-                className="rounded-xl shadow-lg w-full h-auto"
+                src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?q=80&w=1400" 
+                alt="Argos Industries Farm" 
+                className="w-full h-auto object-cover"
               />
             </div>
           </div>
         </div>
       </section>
       
-      {/* Mission & Vision */}
-      <section className="section-padding bg-muted leaf-pattern">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div className="glass-card p-8 reveal-on-scroll">
-              <div className="bg-argos-green/10 p-3 rounded-full w-fit mb-4">
-                <Target className="h-7 w-7 text-argos-green" />
-              </div>
-              <h3 className="text-2xl font-display font-bold mb-4 text-argos-navy">Our Mission</h3>
-              <p className="mb-4">
-                To provide sustainable, innovative agricultural solutions that enhance farm productivity while preserving natural resources for future generations.
-              </p>
-              <p>
-                We strive to empower farmers with the knowledge, tools, and products they need to succeed in an environmentally responsible way, contributing to global food security and ecological balance.
-              </p>
-            </div>
-            
-            <div className="glass-card p-8 reveal-on-scroll">
-              <div className="bg-argos-green/10 p-3 rounded-full w-fit mb-4">
-                <Leaf className="h-7 w-7 text-argos-green" />
-              </div>
-              <h3 className="text-2xl font-display font-bold mb-4 text-argos-navy">Our Vision</h3>
-              <p className="mb-4">
-                To be the global leader in sustainable agricultural innovation, creating a world where farming practices nourish both people and planet.
-              </p>
-              <p>
-                We envision a future where agricultural productivity and environmental stewardship go hand in hand, enabled by our continuous research and development of groundbreaking solutions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Our Values */}
-      <section className="section-padding bg-white">
+      {/* Company Values */}
+      <section className="section-padding bg-muted">
         <div className="container mx-auto px-4">
           <SectionHeading 
             title="Our Core Values"
-            subtitle="These principles guide everything we do at Argos Industries"
-            centered
-          />
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <FeatureCard 
-              title="Environmental Stewardship" 
-              description="We are committed to developing solutions that protect and enhance the natural environment, recognizing our responsibility to current and future generations."
-              icon={Leaf}
-            />
-            <FeatureCard 
-              title="Scientific Excellence" 
-              description="Our work is grounded in rigorous research and innovation, ensuring that our products and services meet the highest standards of efficacy and safety."
-              icon={GraduationCap}
-            />
-            <FeatureCard 
-              title="Customer Partnership" 
-              description="We believe in building lasting relationships with our customers, working together to understand their unique needs and develop tailored solutions."
-              icon={Handshake}
-            />
-            <FeatureCard 
-              title="Integrity" 
-              description="We conduct our business with honesty, transparency, and ethical practices, earning the trust of our stakeholders through our actions."
-              icon={Award}
-            />
-            <FeatureCard 
-              title="Inclusivity" 
-              description="We respect diversity in all its forms and strive to create products and services that benefit agricultural communities worldwide."
-              icon={Users}
-            />
-            <FeatureCard 
-              title="Continuous Improvement" 
-              description="We are never satisfied with the status quo, constantly seeking ways to enhance our offerings and refine our approach to better serve our customers."
-              icon={Target}
-            />
-          </div>
-        </div>
-      </section>
-      
-      {/* Team */}
-      <section className="section-padding bg-gradient-to-r from-argos-green/5 to-argos-navy/5">
-        <div className="container mx-auto px-4">
-          <SectionHeading 
-            title="Our Leadership Team"
-            subtitle="Meet the experts driving innovation at Argos Industries"
+            subtitle="The principles that guide everything we do at Argos Industries"
             centered
           />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {values.map((value, index) => (
+              <div 
+                key={index} 
+                className="bg-white p-6 rounded-xl shadow-md border border-border reveal-on-scroll"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="bg-argos-green/10 p-3 rounded-full w-fit mb-4">
+                  <value.icon className="h-6 w-6 text-argos-green" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-argos-navy">{value.title}</h3>
+                <p className="text-muted-foreground">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Company Timeline */}
+      <section className="section-padding">
+        <div className="container mx-auto px-4">
+          <SectionHeading 
+            title="Our Journey"
+            subtitle="Key milestones in the Argos Industries story"
+            centered
+          />
+          
+          <div className="relative mt-12">
+            {/* Timeline Line */}
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-argos-green/20 transform -translate-x-1/2"></div>
+            
+            {/* Timeline Items */}
+            <div className="space-y-16">
+              {timelineItems.map((item, index) => (
+                <div 
+                  key={index} 
+                  className={`relative flex flex-col md:flex-row gap-8 items-center reveal-on-scroll ${
+                    index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                  }`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {/* Timeline Circle */}
+                  <div className="absolute left-8 md:left-1/2 w-8 h-8 bg-argos-green rounded-full transform -translate-x-1/2 z-10 flex items-center justify-center">
+                    <Clock className="h-4 w-4 text-white" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-16' : 'md:pl-16'}`}>
+                    <div className="bg-white p-6 rounded-xl shadow-md border border-border">
+                      <span className="inline-block px-3 py-1 bg-argos-green/10 text-argos-green rounded-full text-sm font-semibold mb-3">
+                        {item.year}
+                      </span>
+                      <h3 className="text-xl font-semibold mb-2 text-argos-navy">{item.title}</h3>
+                      <p className="text-muted-foreground">{item.description}</p>
+                    </div>
+                  </div>
+                  <div className="md:w-1/2"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Team Section */}
+      <section className="section-padding bg-muted">
+        <div className="container mx-auto px-4">
+          <SectionHeading 
+            title="Our Leadership Team"
+            subtitle="Meet the experienced professionals guiding Argos Industries"
+            centered
+          />
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             {[
               {
-                name: "Dr. James Wilson",
-                title: "Founder & CEO",
-                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&q=80",
-                bio: "With over 30 years in agricultural science, Dr. Wilson founded Argos Industries to bridge the gap between scientific research and practical farming applications."
+                name: "John Anderson",
+                title: "Chief Executive Officer",
+                bio: "With 25+ years in agricultural technology, John leads our company with vision and expertise.",
+                image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=500"
               },
               {
-                name: "Dr. Elena Chen",
-                title: "Chief Scientific Officer",
-                image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&q=80",
-                bio: "Leading our R&D team, Dr. Chen has pioneered multiple breakthroughs in sustainable agriculture and holds numerous patents in bio-fertilizer technology."
+                name: "Maria Rodriguez",
+                title: "Head of Research & Development",
+                bio: "Maria brings scientific rigor and innovation to our product development process.",
+                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=500"
               },
               {
-                name: "Michael Rodriguez",
-                title: "Chief Operations Officer",
-                image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&q=80",
-                bio: "Michael oversees global operations, ensuring that our high standards for quality and sustainability are maintained throughout our production process."
-              },
-              {
-                name: "Sarah Johnson",
+                name: "David Chen",
                 title: "Director of Sustainability",
-                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&q=80",
-                bio: "Sarah develops our environmental strategy, ensuring that our products and practices contribute positively to ecological balance and resource conservation."
+                bio: "David ensures environmental responsibility is integrated into all our operations.",
+                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=500"
               }
             ].map((member, index) => (
-              <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg reveal-on-scroll">
-                <img 
-                  src={member.image} 
-                  alt={member.name} 
-                  className="w-full h-64 object-cover object-center"
-                />
+              <div 
+                key={index} 
+                className="bg-white rounded-xl shadow-md overflow-hidden border border-border reveal-on-scroll"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="h-64 overflow-hidden">
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-1 text-argos-navy">{member.name}</h3>
+                  <h3 className="text-xl font-semibold text-argos-navy">{member.name}</h3>
                   <p className="text-argos-green font-medium mb-3">{member.title}</p>
-                  <p className="text-muted-foreground text-sm">{member.bio}</p>
+                  <p className="text-muted-foreground">{member.bio}</p>
                 </div>
               </div>
             ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Button asChild variant="outline" className="mx-auto">
+              <Link to="/team">
+                <Users className="h-4 w-4 mr-2" />
+                View Full Team
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+      
+      {/* Call to Action */}
+      <section className="section-padding">
+        <div className="container mx-auto px-4">
+          <div className="bg-gradient-to-r from-argos-green/10 to-argos-navy/5 rounded-xl p-8 md:p-12 relative overflow-hidden shadow-md border border-border">
+            <div className="relative z-10 max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl font-display font-bold mb-4 text-argos-navy">Ready to Collaborate?</h2>
+              <p className="text-lg mb-8 text-muted-foreground">
+                Partner with Argos Industries to access cutting-edge agricultural solutions and expertise that will help your farm thrive.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Button asChild className="bg-argos-green hover:bg-argos-green/90 text-white">
+                  <Link to="/contact">Get in Touch</Link>
+                </Button>
+                <Button variant="outline" asChild>
+                  <Link to="/services">Explore Our Services</Link>
+                </Button>
+              </div>
+            </div>
+            
+            {/* Background Decorative Elements */}
+            <div className="absolute right-0 bottom-0 w-64 h-64 bg-argos-green/10 rounded-full -mr-20 -mb-20 z-0"></div>
+            <div className="absolute right-20 bottom-20 w-32 h-32 bg-argos-green/20 rounded-full z-0"></div>
           </div>
         </div>
       </section>
