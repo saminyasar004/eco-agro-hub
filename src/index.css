@@ -1,101 +1,141 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 140 38% 97%;
+    --foreground: 160 25% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 160 25% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 160 25% 12%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 142 100% 26%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 100% 27%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 140 16% 90%;
+    --muted-foreground: 160 10% 40%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 142 70% 90%;
+    --accent-foreground: 142 100% 26%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 140 12% 86%;
+    --input: 140 12% 86%;
+    --ring: 142 100% 26%;
 
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 0.75rem;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
+
+  ::selection {
+    @apply bg-argos-green/20 text-argos-green;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-gradient-to-r from-argos-green to-argos-lightGreen bg-clip-text text-transparent;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-sm border border-white/50 shadow-lg rounded-xl;
+  }
+
+  .nav-link {
+    @apply relative px-2 py-1 text-foreground transition-colors duration-300
+    after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-argos-green
+    after:transition-all after:duration-300 hover:text-argos-green hover:after:w-full;
+  }
+
+  .nav-link-active {
+    @apply text-argos-green after:w-full;
+  }
+
+  .btn-primary {
+    @apply bg-argos-green text-white px-6 py-3 rounded-full shadow-md transition-all
+    duration-300 hover:bg-argos-lightGreen hover:shadow-lg active:translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply bg-white border border-argos-green text-argos-green px-6 py-3 rounded-full 
+    shadow-md transition-all duration-300 hover:bg-argos-green/10 hover:shadow-lg active:translate-y-0.5;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-display font-bold mb-6 text-argos-navy relative
+    after:content-[''] after:absolute after:h-1 after:w-16 after:bg-argos-green after:-bottom-3 after:left-0;
+  }
+
+  .section-title-centered {
+    @apply text-3xl md:text-4xl font-display font-bold mb-6 text-argos-navy relative
+    after:content-[''] after:absolute after:h-1 after:w-16 after:bg-argos-green after:-bottom-3 after:left-1/2 after:-translate-x-1/2;
+  }
+
+  .leaf-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627,25.172c0,0-3.695-5.25-11.25-5.25c-7.547,0-11.25,5.25-11.25,5.25s3.703,5.25,11.25,5.25 C50.932,30.422,54.627,25.172,54.627,25.172z M43.377,28.922c-4.105,0-7.725-2.535-8.918-3.75c1.193-1.215,4.813-3.75,8.918-3.75 c4.113,0,7.732,2.535,8.918,3.75C51.109,26.387,47.49,28.922,43.377,28.922z' fill='%2300843D' fill-opacity='0.07'/%3E%3C/svg%3E");
+  }
+}
+
+/* Custom animations */
+.fade-up-stagger > * {
+  animation: fade-up 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.fade-up-stagger > *:nth-child(1) { animation-delay: 0.1s; }
+.fade-up-stagger > *:nth-child(2) { animation-delay: 0.2s; }
+.fade-up-stagger > *:nth-child(3) { animation-delay: 0.3s; }
+.fade-up-stagger > *:nth-child(4) { animation-delay: 0.4s; }
+.fade-up-stagger > *:nth-child(5) { animation-delay: 0.5s; }
+.fade-up-stagger > *:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
