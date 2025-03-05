@@ -36,7 +36,7 @@ const Navbar = () => {
   }, [location.pathname]);
 
   return (
-    <header className="relative z-50 w-full">
+    <header className="relative z-50 w-full sticky top-0">
       {/* Top Bar */}
       <div className="bg-argos-green text-white py-2 px-4">
         <div className="container mx-auto flex justify-between items-center text-sm">
@@ -59,8 +59,10 @@ const Navbar = () => {
       {/* Main Navbar */}
       <nav 
         className={cn(
-          "w-full bg-white transition-all duration-300",
-          scrolled ? "shadow-md py-2" : "py-4"
+          "w-full backdrop-blur-lg transition-all duration-300",
+          scrolled 
+            ? "bg-white/80 shadow-md py-2" 
+            : "bg-white/95 py-4"
         )}
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
