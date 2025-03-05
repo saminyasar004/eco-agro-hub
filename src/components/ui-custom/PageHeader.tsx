@@ -1,18 +1,25 @@
 
 import { cn } from "@/lib/utils";
 
+interface BreadcrumbItem {
+  label: string;
+  link: string;
+}
+
 interface PageHeaderProps {
   title: string;
   subtitle?: string;
   backgroundImage?: string;
   className?: string;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 const PageHeader = ({ 
   title, 
   subtitle,
   backgroundImage,
-  className 
+  className,
+  breadcrumbs 
 }: PageHeaderProps) => {
   return (
     <section 
@@ -43,6 +50,26 @@ const PageHeader = ({
           <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.2s" }}>
             {subtitle}
           </p>
+        )}
+        
+        {/* Breadcrumbs (optional) */}
+        {breadcrumbs && breadcrumbs.length > 0 && (
+          <div className="flex items-center justify-center space-x-2 mt-6 text-white/70">
+            {breadcrumbs.map((item, index) => (
+              <div key={index} className="flex items-center">
+                {index > 0 && <span className="mx-2">/</span>}
+                <a 
+                  href={item.link} 
+                  className={cn(
+                    "hover:text-white transition-colors",
+                    index === breadcrumbs.length - 1 ? "text-white font-medium" : ""
+                  )}
+                >
+                  {item.label}
+                </a>
+              </div>
+            ))}
+          </div>
         )}
       </div>
       
