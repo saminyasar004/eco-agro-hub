@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/ui-custom/PageHeader";
 import SectionHeading from "../components/ui-custom/SectionHeading";
@@ -6,9 +6,40 @@ import ProductCard from "../components/ui-custom/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
+import { 
+  Select, 
+  SelectContent, 
+  SelectItem, 
+  SelectTrigger, 
+  SelectValue 
+} from "@/components/ui/select";
+import { 
+  Card, 
+  CardContent 
+} from "@/components/ui/card";
+import { Search, Filter } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuLabel,
+  DropdownMenuSeparator
+} from "@/components/ui/dropdown-menu";
+import { 
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger 
+} from "@/components/ui/collapsible";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/components/ui/toggle-group";
 
 const Products = () => {
-  // Product categories - expanded with new categories
+  // Product categories
   const categories = [
     { id: "all", label: "All Products" },
     { id: "fisheries", label: "Fisheries" },
@@ -19,7 +50,7 @@ const Products = () => {
     { id: "equipment", label: "Equipment" }
   ];
 
-  // Product data - expanded with new products
+  // Product data
   const products = [
     {
       id: "organic-fertilizer",
@@ -139,6 +170,48 @@ const Products = () => {
     }
   ];
 
+  // State for advanced filtering
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [priceSort, setPriceSort] = useState("");
+  const [isFilterExpanded, setIsFilterExpanded] = useState(false);
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+
+  // Filter products based on category, search query, and other filters
+  const filteredProducts = products.filter(product => {
+    // Category filter
+    const categoryMatch = 
+      activeCategory === "all" || 
+      product.category === activeCategory;
+
+    // Search filter
+    const searchMatch = 
+      product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchQuery.toLowerCase());
+
+    return categoryMatch && searchMatch;
+  });
+
+  // Sort products if needed
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
+    if (priceSort === "low-high") {
+      return a.price - b.price;
+    } else if (priceSort === "high-low") {
+      return b.price - a.price;
+    }
+    return 0;
+  });
+
+  // Handler for category change via tabs
+  const handleCategoryChange = (value: string) => {
+    setActiveCategory(value);
+  };
+
+  // Handler for search input
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
+  };
+
   return (
     <Layout>
       <PageHeader 
@@ -180,7 +253,7 @@ const Products = () => {
         </div>
       </section>
       
-      {/* Product Listings */}
+      {/* Product Listings with Enhanced Filtering */}
       <section className="section-padding">
         <div className="container mx-auto px-4">
           <SectionHeading 
@@ -188,53 +261,125 @@ const Products = () => {
             subtitle="Browse our selection of high-quality products designed for modern and sustainable farming"
             centered
           />
-          
-          {/* Product Filtering */}
-          <Tabs defaultValue="all" className="mb-12">
-            <TabsList className="flex justify-center flex-wrap">
-              {categories.map((category) => (
-                <TabsTrigger 
-                  key={category.id} 
-                  value={category.id}
-                  className="px-6 py-2 data-[state=active]:bg-argos-green data-[state=active]:text-white"
-                >
-                  {category.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            
-            {/* All Products Tab */}
-            <TabsContent value="all" className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {products.map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    id={product.id}
-                    title={product.title}
-                    category={product.category}
-                    image={product.imageSrc}
+
+          {/* Advanced Search and Filter Tools */}
+          <Card className="mb-8 border border-border">
+            <CardContent className="p-4 md:p-6">
+              <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between mb-4">
+                {/* Search Input */}
+                <div className="relative w-full md:w-1/3">
+                  <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                  <Input 
+                    placeholder="Search products..." 
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                    className="pl-8"
                   />
-                ))}
-              </div>
-            </TabsContent>
-            
-            {/* Category Tabs */}
-            {["fisheries", "farming", "seeds", "fertilizers", "pesticides", "equipment"].map((category) => (
-              <TabsContent key={category} value={category} className="mt-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {products.filter(p => p.category === category).map((product) => (
-                    <ProductCard
-                      key={product.id}
-                      id={product.id}
-                      title={product.title}
-                      category={product.category}
-                      image={product.imageSrc}
-                    />
-                  ))}
                 </div>
-              </TabsContent>
-            ))}
-          </Tabs>
+
+                {/* Sort Dropdown */}
+                <Select value={priceSort} onValueChange={setPriceSort}>
+                  <SelectTrigger className="w-full md:w-[180px]">
+                    <SelectValue placeholder="Sort by" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="">Default</SelectItem>
+                    <SelectItem value="low-high">Price: Low to High</SelectItem>
+                    <SelectItem value="high-low">Price: High to Low</SelectItem>
+                  </SelectContent>
+                </Select>
+
+                {/* Mobile Filter Button - Only visible on mobile */}
+                <Collapsible 
+                  open={isFilterExpanded} 
+                  onOpenChange={setIsFilterExpanded}
+                  className="md:hidden w-full"
+                >
+                  <CollapsibleTrigger asChild>
+                    <Button variant="outline" className="flex items-center gap-2 w-full">
+                      <Filter className="h-4 w-4" />
+                      Filter Products
+                    </Button>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="mt-4">
+                    <div className="space-y-4">
+                      <p className="font-medium">Product Categories</p>
+                      <div className="flex flex-wrap gap-2">
+                        {categories.map(category => (
+                          <Button 
+                            key={category.id}
+                            variant={activeCategory === category.id ? "default" : "outline"}
+                            size="sm"
+                            onClick={() => setActiveCategory(category.id)}
+                            className={activeCategory === category.id ? "bg-argos-green text-white" : ""}
+                          >
+                            {category.label}
+                          </Button>
+                        ))}
+                      </div>
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
+              </div>
+
+              {/* Desktop Category Filter - Horizontal Toggle Group */}
+              <div className="hidden md:block">
+                <ToggleGroup 
+                  type="single" 
+                  value={activeCategory}
+                  onValueChange={(value) => {
+                    if (value) setActiveCategory(value);
+                  }}
+                  className="flex flex-wrap justify-center gap-2"
+                >
+                  {categories.map((category) => (
+                    <ToggleGroupItem 
+                      key={category.id} 
+                      value={category.id}
+                      className={`px-4 py-2 ${activeCategory === category.id ? "bg-argos-green text-white" : "border border-border"}`}
+                    >
+                      {category.label}
+                    </ToggleGroupItem>
+                  ))}
+                </ToggleGroup>
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* Filtered Results */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {sortedProducts.length > 0 ? (
+              sortedProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  id={product.id}
+                  title={product.title}
+                  category={product.category}
+                  image={product.imageSrc}
+                />
+              ))
+            ) : (
+              <div className="col-span-3 text-center py-12">
+                <p className="text-lg text-muted-foreground">No products found. Try adjusting your filters.</p>
+                <Button 
+                  variant="outline" 
+                  onClick={() => {
+                    setActiveCategory("all"); 
+                    setSearchQuery("");
+                    setPriceSort("");
+                  }} 
+                  className="mt-4"
+                >
+                  Clear Filters
+                </Button>
+              </div>
+            )}
+          </div>
+
+          {/* Results Count */}
+          <p className="text-sm text-muted-foreground mt-6 text-center">
+            Showing {sortedProducts.length} of {products.length} products
+          </p>
         </div>
       </section>
       
