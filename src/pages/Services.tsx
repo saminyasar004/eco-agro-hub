@@ -1,4 +1,3 @@
-
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/ui-custom/PageHeader";
 import ServiceCard from "../components/ui-custom/ServiceCard";
@@ -17,7 +16,6 @@ import {
   Users, 
   Wrench,
   Factory,
-  Soil,
   Fish,
   TreeDeciduous,
   GraduationCap,
@@ -92,7 +90,7 @@ const Services = () => {
       imageSrc: "https://images.unsplash.com/photo-1469041797191-50ace28483c3?q=80&w=800"
     }
   ];
-
+  
   // Additional services with expanded descriptions
   const additionalServices = [
     {
@@ -123,7 +121,7 @@ const Services = () => {
     {
       title: "Soil Conservation",
       description: "Specialized services to prevent soil erosion, improve soil structure, and implement conservation measures. We develop customized plans based on land topography, soil type, and local environmental conditions.",
-      icon: Soil
+      icon: TreeDeciduous
     }
   ];
 
