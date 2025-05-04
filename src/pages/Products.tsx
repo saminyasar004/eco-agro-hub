@@ -283,7 +283,7 @@ const Products = () => {
                     <SelectValue placeholder="Sort by" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Default</SelectItem>
+                    <SelectItem value="default">Default</SelectItem>
                     <SelectItem value="low-high">Price: Low to High</SelectItem>
                     <SelectItem value="high-low">Price: High to Low</SelectItem>
                   </SelectContent>
