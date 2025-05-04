@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { ArrowRight, Microscope, Leaf, BarChart4 } from "lucide-react";
+import { ArrowRight, Microscope, Fish, Tractor } from "lucide-react";
 import FeatureCard from "../ui-custom/FeatureCard";
 import SectionHeading from "../ui-custom/SectionHeading";
 
@@ -10,25 +10,25 @@ const ServicesPreview = () => {
       <div className="container mx-auto px-4">
         <SectionHeading 
           title="Our Services"
-          subtitle="We provide comprehensive agricultural services to help farmers maximize productivity and sustainability."
+          subtitle="We provide comprehensive agricultural and fisheries services across Bangladesh to maximize productivity and sustainability."
           centered
         />
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <FeatureCard 
-            title="Soil Analysis" 
-            description="Comprehensive soil testing to determine nutrient levels, pH, and texture for optimal crop growth and fertilizer recommendations."
+            title="Soil Analysis & Engineering" 
+            description="Comprehensive soil testing and engineering solutions to optimize land productivity and ensure sustainable farming practices for Bangladesh's diverse soil types."
             icon={Microscope}
           />
           <FeatureCard 
-            title="Sustainable Farming" 
-            description="Guidance on implementing environmentally friendly farming practices that maintain soil health and reduce environmental impact."
-            icon={Leaf}
+            title="Fisheries Management" 
+            description="Complete fisheries services including pond design, species selection, water quality management, and commercial production optimized for Bangladesh's aquatic environments."
+            icon={Fish}
           />
           <FeatureCard 
-            title="Crop Monitoring" 
-            description="Regular assessment of crop health, growth, and potential issues to ensure optimal yields and early problem detection."
-            icon={BarChart4}
+            title="Equipment Rental" 
+            description="Access to modern agricultural machinery including tractors, harvesters, and irrigation equipment through flexible rental programs tailored to farms of all sizes."
+            icon={Tractor}
           />
         </div>
         

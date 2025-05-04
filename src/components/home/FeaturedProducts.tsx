@@ -4,25 +4,25 @@ import { ArrowRight } from "lucide-react";
 import ProductCard from "../ui-custom/ProductCard";
 import SectionHeading from "../ui-custom/SectionHeading";
 
-// Sample product data
+// Updated featured products to reflect expanded offerings
 const products = [
   {
-    id: "bio-fertilizer",
-    title: "Bio-Fertilizer",
-    category: "Fertilizers",
-    image: "https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?q=80&w=800",
+    id: "tilapia-fingerlings",
+    title: "Tilapia Fingerlings",
+    category: "Fisheries",
+    image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?q=80&w=800",
   },
   {
-    id: "organic-pesticides",
-    title: "Organic Pesticides",
-    category: "Crop Protection",
-    image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=800",
+    id: "dairy-cattle",
+    title: "Dairy Cattle Breeds",
+    category: "Cattle Farming",
+    image: "https://images.unsplash.com/photo-1465379944081-7f47de8d74ac?q=80&w=800",
   },
   {
-    id: "high-yield-seeds",
-    title: "High-Yield Seeds",
-    category: "Seeds",
-    image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80&w=800",
+    id: "tractor-rental",
+    title: "Tractor Rental Service",
+    category: "Equipment",
+    image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=800",
   }
 ];
 
@@ -32,7 +32,7 @@ const FeaturedProducts = () => {
       <div className="container mx-auto px-4">
         <SectionHeading 
           title="Our Featured Products"
-          subtitle="Discover our top agricultural products designed to maximize productivity while minimizing environmental impact."
+          subtitle="Discover our comprehensive range of agricultural and fisheries products designed for Bangladesh's farming needs."
           centered
         />
         

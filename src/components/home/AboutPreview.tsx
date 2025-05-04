@@ -11,15 +11,15 @@ const AboutPreview = () => {
           <div>
             <SectionHeading 
               title="Leading the Way in Agricultural Innovation"
-              subtitle="With over 25 years of experience, Argos Industries Ltd has been at the forefront of developing sustainable agricultural solutions."
+              subtitle="With over 25 years of experience, Argos Industries Ltd has been at the forefront of developing sustainable agricultural solutions across Bangladesh."
             />
             
             <div className="space-y-4 mb-8">
               {[
-                "Environmentally friendly agricultural products",
-                "Innovative farming techniques and services",
-                "Comprehensive support for modern farmers",
-                "Research-backed solutions for optimal crop yield"
+                "Managing 126,000 hectares of agricultural land across Bangladesh",
+                "Pioneering the BARRI rice field project in Nouga district",
+                "Comprehensive agricultural and fisheries products and services",
+                "Research-backed solutions for optimal crop and livestock yield"
               ].map((item, index) => (
                 <div key={index} className="flex items-start reveal-on-scroll">
                   <CheckCircle className="h-6 w-6 text-argos-green mr-3 flex-shrink-0 mt-0.5" />

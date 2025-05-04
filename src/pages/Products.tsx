@@ -8,15 +8,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Link } from "react-router-dom";
 
 const Products = () => {
-  // Product categories
+  // Product categories - expanded with new categories
   const categories = [
     { id: "all", label: "All Products" },
+    { id: "fisheries", label: "Fisheries" },
+    { id: "farming", label: "Farming" },
     { id: "seeds", label: "Seeds & Seedlings" },
     { id: "fertilizers", label: "Fertilizers" },
+    { id: "pesticides", label: "Pesticides" },
     { id: "equipment", label: "Equipment" }
   ];
 
-  // Product data
+  // Product data - expanded with new products
   const products = [
     {
       id: "organic-fertilizer",
@@ -65,6 +68,74 @@ const Products = () => {
       category: "equipment",
       price: 45.99,
       imageSrc: "https://images.unsplash.com/photo-1598887852154-e51feda9d584?q=80&w=800"
+    },
+    // New fisheries products
+    {
+      id: "tilapia-fingerlings",
+      title: "Tilapia Fingerlings",
+      description: "Fast-growing, disease-resistant tilapia fingerlings for commercial fish farming",
+      category: "fisheries",
+      price: 89.99,
+      imageSrc: "https://images.unsplash.com/photo-1500673922987-e212871fec22?q=80&w=800"
+    },
+    {
+      id: "aquaculture-feed",
+      title: "Premium Aquaculture Feed",
+      description: "High-quality feed formulated for optimal fish growth and health",
+      category: "fisheries",
+      price: 42.99,
+      imageSrc: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?q=80&w=800"
+    },
+    {
+      id: "fishing-nets",
+      title: "Commercial Fishing Nets",
+      description: "Durable, high-capacity fishing nets designed for commercial use",
+      category: "fisheries",
+      price: 199.99,
+      imageSrc: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800"
+    },
+    // New farming products
+    {
+      id: "dairy-cattle",
+      title: "Dairy Cattle Breeds",
+      description: "High-milk-yield dairy cattle breeds adapted to local climate conditions",
+      category: "farming",
+      price: 1299.99,
+      imageSrc: "https://images.unsplash.com/photo-1465379944081-7f47de8d74ac?q=80&w=800"
+    },
+    {
+      id: "fruit-tree-saplings",
+      title: "Fruit Tree Saplings",
+      description: "Quality fruit tree saplings for establishing productive orchards",
+      category: "farming",
+      price: 34.99,
+      imageSrc: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800"
+    },
+    // New pesticides products
+    {
+      id: "bio-pesticide",
+      title: "Organic Bio-Pesticide",
+      description: "Environmentally friendly pesticide for effective pest control without harmful chemicals",
+      category: "pesticides",
+      price: 39.99,
+      imageSrc: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=800"
+    },
+    {
+      id: "insect-repellent",
+      title: "Advanced Insect Repellent",
+      description: "Long-lasting insect repellent to protect crops from common pests",
+      category: "pesticides",
+      price: 29.99,
+      imageSrc: "https://images.unsplash.com/photo-1469041797191-50ace28483c3?q=80&w=800"
+    },
+    // Additional equipment
+    {
+      id: "tractor-rental",
+      title: "Tractor Rental Service",
+      description: "Modern tractors available for daily, weekly, or seasonal rental",
+      category: "equipment",
+      price: 149.99,
+      imageSrc: "https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=800"
     }
   ];
 
@@ -72,12 +143,42 @@ const Products = () => {
     <Layout>
       <PageHeader 
         title="Our Products"
-        subtitle="High-quality agricultural products to optimize your farming operations"
+        subtitle="Comprehensive agricultural and fisheries products to optimize farming operations across Bangladesh"
         breadcrumbs={[
           { label: "Home", link: "/" },
           { label: "Products", link: "/products" }
         ]}
       />
+      
+      {/* Product Overview Section */}
+      <section className="bg-muted py-12">
+        <div className="container mx-auto px-4">
+          <div className="bg-white rounded-xl p-8 shadow-md border border-border">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-display font-bold mb-4 text-argos-navy">Complete Agricultural Solutions</h2>
+              <p className="text-lg mb-6 text-muted-foreground">
+                At Argos Industries, we provide a comprehensive range of products to support every aspect of agricultural 
+                and aquaculture operations. From modern farming equipment to sustainable fisheries solutions, our catalog 
+                includes everything needed for efficient and productive agricultural enterprises.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div className="bg-argos-green/5 p-4 rounded-lg">
+                  <h3 className="font-semibold text-argos-navy mb-2">Extensive Fisheries</h3>
+                  <p className="text-sm">Complete solutions for commercial fish farming, including fingerlings, feed, and equipment.</p>
+                </div>
+                <div className="bg-argos-green/5 p-4 rounded-lg">
+                  <h3 className="font-semibold text-argos-navy mb-2">Farming Resources</h3>
+                  <p className="text-sm">Quality livestock, seedlings, and farming supplies for both small and large-scale operations.</p>
+                </div>
+                <div className="bg-argos-green/5 p-4 rounded-lg">
+                  <h3 className="font-semibold text-argos-navy mb-2">Equipment Rental</h3>
+                  <p className="text-sm">Access modern agricultural equipment without the high capital investment through our flexible rental program.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       
       {/* Product Listings */}
       <section className="section-padding">
@@ -90,7 +191,7 @@ const Products = () => {
           
           {/* Product Filtering */}
           <Tabs defaultValue="all" className="mb-12">
-            <TabsList className="flex justify-center">
+            <TabsList className="flex justify-center flex-wrap">
               {categories.map((category) => (
                 <TabsTrigger 
                   key={category.id} 
@@ -118,7 +219,7 @@ const Products = () => {
             </TabsContent>
             
             {/* Category Tabs */}
-            {["seeds", "fertilizers", "equipment"].map((category) => (
+            {["fisheries", "farming", "seeds", "fertilizers", "pesticides", "equipment"].map((category) => (
               <TabsContent key={category} value={category} className="mt-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {products.filter(p => p.category === category).map((product) => (
@@ -144,7 +245,7 @@ const Products = () => {
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl font-display font-bold mb-4 text-argos-navy">Need Our Complete Product Catalog?</h2>
               <p className="text-lg mb-8 text-muted-foreground">
-                Download our comprehensive product catalog with detailed specifications, application guidelines, and pricing information.
+                Download our comprehensive product catalog with detailed specifications, application guidelines, and pricing information for our entire range of agricultural and fishery products.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button asChild className="bg-argos-green hover:bg-argos-green/90 text-white">

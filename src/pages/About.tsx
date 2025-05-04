@@ -36,27 +36,32 @@ const About = () => {
     {
       year: "1995",
       title: "Company Founded",
-      description: "Argos Industries was established with a mission to support sustainable agriculture."
+      description: "Argos Industries was established with a mission to support sustainable agriculture in Bangladesh."
     },
     {
       year: "2003",
       title: "Research Center",
-      description: "Opened our first agricultural research and development center."
+      description: "Opened our first agricultural research and development center, focusing on crop adaptation to local conditions."
     },
     {
       year: "2010",
-      title: "International Expansion",
-      description: "Expanded operations to serve customers across North America and Europe."
+      title: "Land Acquisition",
+      description: "Expanded our agricultural operations to 50,000 hectares across key farming regions in Bangladesh."
+    },
+    {
+      year: "2015",
+      title: "BARRI Partnership",
+      description: "Launched partnership with Bangladesh Agricultural Research Institute (BARRI) for the rice field project in Nouga district."
     },
     {
       year: "2018",
       title: "Sustainable Farming Initiative",
-      description: "Launched innovative program to promote and support eco-friendly farming practices."
+      description: "Launched innovative program to promote and support eco-friendly farming practices across our 126,000 hectares of land."
     },
     {
       year: "2023",
       title: "Digital Agriculture",
-      description: "Introduced advanced digital farming solutions incorporating AI and IoT technology."
+      description: "Introduced advanced digital farming solutions incorporating AI and IoT technology for precision agriculture."
     }
   ];
 
@@ -64,7 +69,7 @@ const About = () => {
     <Layout>
       <PageHeader 
         title="About Argos Industries"
-        subtitle="Leading the way in sustainable agricultural solutions since 1995"
+        subtitle="Leading the way in sustainable agricultural solutions in Bangladesh since 1995"
         breadcrumbs={[
           { label: "Home", link: "/" },
           { label: "About", link: "/about" }
@@ -78,19 +83,19 @@ const About = () => {
             <div className="reveal-on-scroll">
               <h2 className="text-3xl font-display font-bold mb-6 text-argos-navy">Our Story</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                For over 25 years, Argos Industries has been at the forefront of agricultural innovation, 
+                For over 25 years, Argos Industries has been at the forefront of agricultural innovation in Bangladesh, 
                 providing farmers with the tools, knowledge, and support they need to thrive in an 
                 ever-changing landscape.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
                 What began as a small family business has grown into a leading provider of agricultural 
-                solutions, serving customers across the globe with a commitment to quality, sustainability, 
-                and innovation.
+                solutions, managing 126,000 hectares of agricultural land and serving customers across the country 
+                with a commitment to quality, sustainability, and innovation.
               </p>
               <p className="text-lg text-muted-foreground">
                 Today, we continue to build on our legacy of excellence, developing new technologies and 
                 practices that help farmers increase yields, reduce environmental impact, and build 
-                resilient agricultural systems for the future.
+                resilient agricultural systems for Bangladesh's future.
               </p>
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg border border-border reveal-on-scroll">
@@ -99,6 +104,50 @@ const About = () => {
                 alt="Argos Industries Farm" 
                 className="w-full h-auto object-cover"
               />
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Agricultural Operations */}
+      <section className="section-padding bg-gradient-to-r from-argos-green/10 to-argos-navy/5">
+        <div className="container mx-auto px-4">
+          <SectionHeading 
+            title="Our Agricultural Operations"
+            subtitle="Managing one of Bangladesh's largest agricultural land portfolios"
+            centered
+          />
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-12">
+            <div className="rounded-xl overflow-hidden shadow-md border border-border order-2 lg:order-1 reveal-on-scroll">
+              <img 
+                src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?q=80&w=1400" 
+                alt="Argos Rice Fields" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            <div className="order-1 lg:order-2 reveal-on-scroll">
+              <h3 className="text-2xl font-display font-bold mb-4 text-argos-navy">126,000 Hectares of Agricultural Land</h3>
+              <p className="text-lg text-muted-foreground mb-6">
+                Argos Industries manages 126,000 hectares of agricultural land across Bangladesh, making us one of the 
+                country's largest agricultural enterprises. Our lands span diverse ecological zones, allowing us to 
+                cultivate a wide range of crops and implement region-specific farming practices.
+              </p>
+              <div className="bg-white p-6 rounded-xl shadow-sm mb-6">
+                <h4 className="font-semibold text-argos-navy mb-2">BARRI Rice Field Project</h4>
+                <p className="text-muted-foreground">
+                  In partnership with the Bangladesh Agricultural Research Institute (BARRI), we operate an extensive rice 
+                  field project in Nouga district. This pioneering initiative focuses on developing high-yield, 
+                  climate-resilient rice varieties specifically adapted to Bangladesh's growing conditions. 
+                  The project combines traditional knowledge with modern agricultural science to improve food security 
+                  and farmer livelihoods.
+                </p>
+              </div>
+              <p className="text-lg text-muted-foreground">
+                Our land management approach emphasizes sustainability, biodiversity, and long-term soil health. 
+                We implement crop rotation, integrated pest management, and water conservation practices to ensure 
+                the continued productivity of our agricultural lands for generations to come.
+              </p>
             </div>
           </div>
         </div>
@@ -191,19 +240,19 @@ const About = () => {
               {
                 name: "John Anderson",
                 title: "Chief Executive Officer",
-                bio: "With 25+ years in agricultural technology, John leads our company with vision and expertise.",
+                bio: "With 25+ years in agricultural technology, John leads our company with vision and expertise in sustainable farming practices.",
                 image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=500"
               },
               {
                 name: "Maria Rodriguez",
                 title: "Head of Research & Development",
-                bio: "Maria brings scientific rigor and innovation to our product development process.",
+                bio: "Maria brings scientific rigor and innovation to our product development process, with special focus on adapting solutions to Bangladesh's unique agricultural needs.",
                 image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=500"
               },
               {
                 name: "David Chen",
                 title: "Director of Sustainability",
-                bio: "David ensures environmental responsibility is integrated into all our operations.",
+                bio: "David ensures environmental responsibility is integrated into all our operations, managing our 126,000 hectares with a focus on long-term ecological health.",
                 image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=500"
               }
             ].map((member, index) => (
@@ -246,7 +295,7 @@ const About = () => {
             <div className="relative z-10 max-w-3xl mx-auto text-center">
               <h2 className="text-3xl font-display font-bold mb-4 text-argos-navy">Ready to Collaborate?</h2>
               <p className="text-lg mb-8 text-muted-foreground">
-                Partner with Argos Industries to access cutting-edge agricultural solutions and expertise that will help your farm thrive.
+                Partner with Argos Industries to access cutting-edge agricultural solutions and expertise that will help your farm thrive in Bangladesh's dynamic agricultural landscape.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button asChild className="bg-argos-green hover:bg-argos-green/90 text-white">
