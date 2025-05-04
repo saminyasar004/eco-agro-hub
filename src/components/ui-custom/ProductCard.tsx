@@ -21,7 +21,7 @@ const ProductCard = ({
     <Link 
       to={`/products/${id}`}
       className={cn(
-        "group block overflow-hidden rounded-xl shadow-md card-hover reveal-on-scroll",
+        "group block overflow-hidden rounded-xl shadow-md reveal-on-scroll",
         className
       )}
     >
@@ -30,7 +30,7 @@ const ProductCard = ({
         <img 
           src={image} 
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-full object-cover"
         />
         <div className="absolute bottom-0 left-0 p-4 z-20">
           <span className="inline-block bg-argos-green text-white text-xs px-3 py-1 rounded-full mb-2">
