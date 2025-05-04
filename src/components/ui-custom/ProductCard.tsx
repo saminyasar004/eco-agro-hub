@@ -21,7 +21,7 @@ const ProductCard = ({
     <Link 
       to={`/products/${id}`}
       className={cn(
-        "group block overflow-hidden rounded-xl shadow-md reveal-on-scroll",
+        "group block overflow-hidden rounded-xl shadow-md",
         className
       )}
     >
