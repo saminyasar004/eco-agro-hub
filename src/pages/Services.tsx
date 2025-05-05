@@ -20,7 +20,8 @@ import {
   TreeDeciduous,
   GraduationCap,
   Search,
-  Wheat
+  Wheat,
+  Refrigerator
 } from "lucide-react";
 
 const Services = () => {
@@ -46,6 +47,13 @@ const Services = () => {
       description: "Comprehensive assessment of crop health, growth patterns, and potential issues using both field visits and advanced technology. Our specialists provide timely interventions to ensure optimal yields and early problem detection throughout the growing season.",
       icon: BarChart4,
       imageSrc: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80&w=800"
+    },
+    {
+      id: "cold-storage",
+      title: "Cold Storage Solutions",
+      description: "State-of-the-art cold storage facilities for preserving agricultural produce, ensuring longer shelf life and maintaining quality. Our temperature-controlled storage units are available for rent to farmers, distributors, and food processors across Bangladesh.",
+      icon: Refrigerator,
+      imageSrc: "https://images.unsplash.com/photo-1493962853295-0fd70327578a?q=80&w=800"
     },
     {
       id: "equipment-rental",
@@ -177,6 +185,66 @@ const Services = () => {
                 imageSrc={service.imageSrc}
               />
             ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Cold Storage Section */}
+      <section className="section-padding bg-gradient-to-r from-argos-green/5 to-argos-navy/10">
+        <div className="container mx-auto px-4">
+          <SectionHeading 
+            title="Cold Storage Solutions"
+            subtitle="Modern temperature-controlled facilities for preserving agricultural produce"
+            centered
+          />
+          
+          <div className="bg-white rounded-xl p-8 shadow-md mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-2xl font-display font-bold mb-4 text-argos-navy">Temperature-Controlled Storage Network</h3>
+                <p className="mb-4 text-muted-foreground">
+                  Our network of modern cold storage facilities spans across Bangladesh, providing farmers and food processors 
+                  with reliable temperature-controlled environments for extending the shelf life of agricultural produce.
+                  From fruits and vegetables to dairy and meat products, our facilities maintain optimal conditions for each product type.
+                </p>
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start">
+                    <div className="bg-argos-green/10 p-1 rounded-full mr-2 mt-1">
+                      <Refrigerator className="h-4 w-4 text-argos-green" />
+                    </div>
+                    <span>Temperature ranges from -20°C to 15°C for different product requirements</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="bg-argos-green/10 p-1 rounded-full mr-2 mt-1">
+                      <Refrigerator className="h-4 w-4 text-argos-green" />
+                    </div>
+                    <span>Humidity-controlled environments for optimal produce preservation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="bg-argos-green/10 p-1 rounded-full mr-2 mt-1">
+                      <Refrigerator className="h-4 w-4 text-argos-green" />
+                    </div>
+                    <span>Flexible rental options: daily, weekly, monthly or seasonal contracts</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="bg-argos-green/10 p-1 rounded-full mr-2 mt-1">
+                      <Refrigerator className="h-4 w-4 text-argos-green" />
+                    </div>
+                    <span>Available in 4 major agricultural regions across Bangladesh</span>
+                  </li>
+                </ul>
+                <Button asChild className="bg-argos-green hover:bg-argos-green/90 text-white">
+                  <Link to="/contact">Inquire About Storage</Link>
+                </Button>
+              </div>
+              <div className="rounded-xl overflow-hidden h-96">
+                <img 
+                  src="https://images.unsplash.com/photo-1465379944081-7f47de8d74ac?q=80&w=800" 
+                  alt="Modern cold storage facility" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>

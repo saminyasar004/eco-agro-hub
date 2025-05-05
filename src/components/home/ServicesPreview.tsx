@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { ArrowRight, Microscope, Fish, Tractor } from "lucide-react";
+import { ArrowRight, Microscope, Fish, Tractor, Refrigerator } from "lucide-react";
 import FeatureCard from "../ui-custom/FeatureCard";
 import SectionHeading from "../ui-custom/SectionHeading";
 
@@ -14,7 +14,7 @@ const ServicesPreview = () => {
           centered
         />
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <FeatureCard 
             title="Soil Analysis & Engineering" 
             description="Comprehensive soil testing and engineering solutions to optimize land productivity and ensure sustainable farming practices for Bangladesh's diverse soil types."
@@ -29,6 +29,11 @@ const ServicesPreview = () => {
             title="Equipment Rental" 
             description="Access to modern agricultural machinery including tractors, harvesters, and irrigation equipment through flexible rental programs tailored to farms of all sizes."
             icon={Tractor}
+          />
+          <FeatureCard 
+            title="Cold Storage Solutions" 
+            description="Temperature-controlled storage facilities across Bangladesh for preserving agricultural produce, ensuring longer shelf life and maintaining quality for market distribution."
+            icon={Refrigerator}
           />
         </div>
         
