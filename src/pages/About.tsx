@@ -419,16 +419,16 @@ const About = () => {
             />
             
             <div className="mt-12">
-              {/* Organization Chart with connection lines */}
+              {/* Organization Chart without connection lines */}
               <div className="organization-chart">
                 {/* Board of Directors */}
-                <div className="mb-16 relative">
+                <div className="mb-16">
                   <h3 className="text-2xl font-display font-bold text-argos-navy mb-6 text-center">Board of Directors</h3>
-                  <div className="flex justify-center gap-6 relative">
+                  <div className="flex flex-wrap justify-center gap-6">
                     {organizationStructure
                       .filter(member => member.isBoard)
                       .map((member, index) => (
-                        <Card key={index} className="w-64 bg-white border-argos-navy/20 relative z-10">
+                        <Card key={index} className="w-64 bg-white border-argos-navy/20">
                           <CardContent className="p-6 text-center">
                             <h4 className="font-semibold text-lg text-argos-navy mb-2">{member.name}</h4>
                             <p className="text-argos-green">{member.title}</p>
@@ -439,16 +439,13 @@ const About = () => {
                 </div>
                 
                 {/* Executive Leadership - Level 1 */}
-                <div className="mb-16 relative">
+                <div className="mb-16">
                   <h3 className="text-2xl font-display font-bold text-argos-navy mb-6 text-center">Executive Leadership</h3>
-                  <div className="flex justify-center mb-8 relative">
-                    {/* Connection Line from Board to CEO */}
-                    <div className="absolute top-[-60px] left-1/2 w-1 bg-argos-green/50 h-[60px] -translate-x-1/2"></div>
-                    
+                  <div className="flex flex-wrap justify-center mb-8">
                     {organizationStructure
                       .filter(member => member.level === 1)
                       .map((member, index) => (
-                        <Card key={index} className="w-64 bg-white border-argos-green relative z-10" id={member.id}>
+                        <Card key={index} className="w-64 bg-white border-argos-green" id={member.id}>
                           <CardContent className="p-6 text-center">
                             <h4 className="font-semibold text-lg text-argos-navy mb-2">{member.name}</h4>
                             <p className="text-argos-green">{member.title}</p>
@@ -459,33 +456,12 @@ const About = () => {
                 </div>
                 
                 {/* SVP Level - Level 2 */}
-                <div className="mb-16 relative">
-                  <div className="flex flex-wrap justify-center gap-6 relative">
-                    {/* Vertical Line from CEO to SVP Level */}
-                    <div className="absolute top-[-40px] left-1/2 w-1 bg-argos-green/50 h-[40px] -translate-x-1/2"></div>
-                    
-                    {/* Horizontal Line connecting all SVPs */}
-                    <div className="absolute top-[-40px] left-[calc(25%+32px)] right-[calc(25%+32px)] h-1 bg-argos-green/50"></div>
-                    
-                    {/* Vertical Lines down to each SVP */}
-                    {organizationStructure
-                      .filter(member => member.level === 2)
-                      .map((_, index, arr) => {
-                        const width = 100 / arr.length;
-                        const leftPosition = `calc(${width/2 + width * index}% - 0.5px)`;
-                        return (
-                          <div 
-                            key={index} 
-                            className="absolute w-1 bg-argos-green/50 h-[40px]" 
-                            style={{ top: "-40px", left: leftPosition }}
-                          ></div>
-                        );
-                      })}
-                    
+                <div className="mb-16">
+                  <div className="flex flex-wrap justify-center gap-6">
                     {organizationStructure
                       .filter(member => member.level === 2)
                       .map((member, index) => (
-                        <Card key={index} className="w-60 bg-white relative z-10" id={member.id}>
+                        <Card key={index} className="w-60 bg-white" id={member.id}>
                           <CardContent className="p-6 text-center">
                             <h4 className="font-semibold text-lg text-argos-navy mb-2">{member.name}</h4>
                             <p className="text-argos-green">{member.title}</p>
@@ -496,43 +472,12 @@ const About = () => {
                 </div>
                 
                 {/* Director Level - Level 3 */}
-                <div className="mb-16 relative">
-                  <div className="flex flex-wrap justify-center gap-6 relative">
-                    {/* Horizontal Line connecting all Directors */}
-                    <div className="absolute top-[-40px] left-[80px] right-[80px] h-1 bg-argos-green/50"></div>
-                    
-                    {/* Vertical Lines connecting each Director to the respective SVP */}
-                    {organizationStructure
-                      .filter(member => member.level === 3)
-                      .map((member, index, arr) => {
-                        // Find the parent SVP's index position to align connection
-                        const parentIndex = organizationStructure
-                          .filter(m => m.level === 2)
-                          .findIndex(m => m.id === member.reportTo);
-                        
-                        // Calculate parent's horizontal position
-                        const parentCount = organizationStructure.filter(m => m.level === 2).length;
-                        const parentWidth = 100 / parentCount;
-                        const parentLeftPosition = `calc(${parentWidth/2 + parentWidth * parentIndex}% - 0.5px)`;
-                        
-                        // Calculate current element's position
-                        const width = 100 / arr.length;
-                        const leftPosition = `calc(${width/2 + width * index}% - 0.5px)`;
-                        
-                        return (
-                          <div key={index} className="relative">
-                            <div 
-                              className="absolute w-1 bg-argos-green/50 h-[40px]" 
-                              style={{ top: "-40px", left: `calc(50% - 0.5px)` }}
-                            ></div>
-                          </div>
-                        );
-                      })}
-                    
+                <div className="mb-16">
+                  <div className="flex flex-wrap justify-center gap-6">
                     {organizationStructure
                       .filter(member => member.level === 3)
                       .map((member, index) => (
-                        <Card key={index} className="w-56 bg-white relative z-10" id={member.id}>
+                        <Card key={index} className="w-56 bg-white" id={member.id}>
                           <CardContent className="p-6 text-center">
                             <h4 className="font-semibold text-lg text-argos-navy mb-2">{member.name}</h4>
                             <p className="text-argos-green">{member.title}</p>
@@ -544,28 +489,11 @@ const About = () => {
                 
                 {/* Manager Level - Level 4 */}
                 <div className="relative">
-                  <div className="flex flex-wrap justify-center gap-6 relative">
-                    {/* Horizontal Line connecting all Managers */}
-                    <div className="absolute top-[-40px] left-[80px] right-[80px] h-1 bg-argos-green/50"></div>
-                    
-                    {/* Vertical Lines connecting each Manager */}
-                    {organizationStructure
-                      .filter(member => member.level === 4)
-                      .map((member, index, arr) => {
-                        return (
-                          <div key={index} className="relative">
-                            <div 
-                              className="absolute w-1 bg-argos-green/50 h-[40px]" 
-                              style={{ top: "-40px", left: `calc(50% - 0.5px)` }}
-                            ></div>
-                          </div>
-                        );
-                      })}
-                    
+                  <div className="flex flex-wrap justify-center gap-6">
                     {organizationStructure
                       .filter(member => member.level === 4)
                       .map((member, index) => (
-                        <Card key={index} className="w-52 bg-white relative z-10" id={member.id}>
+                        <Card key={index} className="w-52 bg-white" id={member.id}>
                           <CardContent className="p-6 text-center">
                             <h4 className="font-semibold text-lg text-argos-navy mb-2">{member.name}</h4>
                             <p className="text-argos-green">{member.title}</p>
