@@ -65,59 +65,137 @@ const About = () => {
     }
   ];
 
-  // Organization structure
+  // Organization structure - expanded to 18 members
   const organizationStructure = [
-    {
-      name: "John Anderson",
-      title: "Chief Executive Officer",
-      level: 1
-    },
-    {
-      name: "Maria Rodriguez",
-      title: "Head of Research & Development",
-      level: 2
-    },
-    {
-      name: "David Chen",
-      title: "Director of Sustainability",
-      level: 2
-    },
-    {
-      name: "Sarah Johnson",
-      title: "Chief Financial Officer",
-      level: 2
-    },
-    {
-      name: "Michael Wong",
-      title: "Head of Operations",
-      level: 2
-    },
-    {
-      name: "Aisha Patel",
-      title: "Marketing Director",
-      level: 3
-    },
-    {
-      name: "Robert Lee",
-      title: "Head of Product Development",
-      level: 3
-    },
-    {
-      name: "Priya Sharma",
-      title: "HR Director",
-      level: 3
-    },
+    // Board Level (Level 0)
     {
       name: "James Wilson",
       title: "Board Chairman",
       level: 0,
+      id: "board-1",
       isBoard: true
     },
     {
       name: "Elena Garcia",
       title: "Board Member",
       level: 0,
+      id: "board-2",
       isBoard: true
+    },
+    {
+      name: "Thomas Reynolds",
+      title: "Board Member",
+      level: 0,
+      id: "board-3",
+      isBoard: true
+    },
+    {
+      name: "Anika Patel",
+      title: "Board Member",
+      level: 0,
+      id: "board-4",
+      isBoard: true
+    },
+    // C-Level (Level 1)
+    {
+      name: "John Anderson",
+      title: "Chief Executive Officer",
+      level: 1,
+      id: "c-1"
+    },
+    // SVP Level (Level 2)
+    {
+      name: "Maria Rodriguez",
+      title: "Head of Research & Development",
+      level: 2,
+      id: "svp-1",
+      reportTo: "c-1"
+    },
+    {
+      name: "David Chen",
+      title: "Director of Sustainability",
+      level: 2,
+      id: "svp-2",
+      reportTo: "c-1"
+    },
+    {
+      name: "Sarah Johnson",
+      title: "Chief Financial Officer",
+      level: 2,
+      id: "svp-3",
+      reportTo: "c-1"
+    },
+    {
+      name: "Michael Wong",
+      title: "Head of Operations",
+      level: 2,
+      id: "svp-4",
+      reportTo: "c-1"
+    },
+    // Director Level (Level 3)
+    {
+      name: "Aisha Patel",
+      title: "Marketing Director",
+      level: 3,
+      id: "dir-1",
+      reportTo: "svp-4"
+    },
+    {
+      name: "Robert Lee",
+      title: "Head of Product Development",
+      level: 3,
+      id: "dir-2",
+      reportTo: "svp-1"
+    },
+    {
+      name: "Priya Sharma",
+      title: "HR Director",
+      level: 3,
+      id: "dir-3",
+      reportTo: "svp-3"
+    },
+    {
+      name: "Carlos Mendez",
+      title: "Technology Director",
+      level: 3,
+      id: "dir-4",
+      reportTo: "svp-1"
+    },
+    {
+      name: "Laura Chen",
+      title: "Regional Director - Asia",
+      level: 3,
+      id: "dir-5",
+      reportTo: "svp-4"
+    },
+    // Manager Level (Level 4)
+    {
+      name: "Raj Patel",
+      title: "Supply Chain Manager",
+      level: 4,
+      id: "mgr-1",
+      reportTo: "dir-5"
+    },
+    {
+      name: "Emma Wilson",
+      title: "Sustainability Projects Manager",
+      level: 4,
+      id: "mgr-2",
+      reportTo: "svp-2"
+    },
+    {
+      name: "Miguel Santos",
+      title: "Agricultural Research Manager",
+      level: 4,
+      id: "mgr-3",
+      reportTo: "dir-2"
+    },
+    {
+      name: "Olivia Tanaka",
+      title: "Communications Manager",
+      level: 4,
+      id: "mgr-4",
+      reportTo: "dir-1"
     }
   ];
 
@@ -341,16 +419,16 @@ const About = () => {
             />
             
             <div className="mt-12">
-              {/* Organization Chart */}
+              {/* Organization Chart with connection lines */}
               <div className="organization-chart">
                 {/* Board of Directors */}
-                <div className="mb-12">
+                <div className="mb-16 relative">
                   <h3 className="text-2xl font-display font-bold text-argos-navy mb-6 text-center">Board of Directors</h3>
-                  <div className="flex justify-center gap-6">
+                  <div className="flex justify-center gap-6 relative">
                     {organizationStructure
                       .filter(member => member.isBoard)
                       .map((member, index) => (
-                        <Card key={index} className="w-64 bg-white border-argos-navy/20">
+                        <Card key={index} className="w-64 bg-white border-argos-navy/20 relative z-10">
                           <CardContent className="p-6 text-center">
                             <h4 className="font-semibold text-lg text-argos-navy mb-2">{member.name}</h4>
                             <p className="text-argos-green">{member.title}</p>
@@ -360,14 +438,17 @@ const About = () => {
                   </div>
                 </div>
                 
-                {/* Executive Leadership */}
-                <div className="mb-8">
+                {/* Executive Leadership - Level 1 */}
+                <div className="mb-16 relative">
                   <h3 className="text-2xl font-display font-bold text-argos-navy mb-6 text-center">Executive Leadership</h3>
-                  <div className="flex justify-center mb-8">
+                  <div className="flex justify-center mb-8 relative">
+                    {/* Connection Line from Board to CEO */}
+                    <div className="absolute top-[-60px] left-1/2 w-1 bg-argos-green/50 h-[60px] -translate-x-1/2"></div>
+                    
                     {organizationStructure
                       .filter(member => member.level === 1)
                       .map((member, index) => (
-                        <Card key={index} className="w-64 bg-white border-argos-green">
+                        <Card key={index} className="w-64 bg-white border-argos-green relative z-10" id={member.id}>
                           <CardContent className="p-6 text-center">
                             <h4 className="font-semibold text-lg text-argos-navy mb-2">{member.name}</h4>
                             <p className="text-argos-green">{member.title}</p>
@@ -377,13 +458,34 @@ const About = () => {
                   </div>
                 </div>
                 
-                {/* Directors */}
-                <div className="mb-8">
-                  <div className="flex flex-wrap justify-center gap-6">
+                {/* SVP Level - Level 2 */}
+                <div className="mb-16 relative">
+                  <div className="flex flex-wrap justify-center gap-6 relative">
+                    {/* Vertical Line from CEO to SVP Level */}
+                    <div className="absolute top-[-40px] left-1/2 w-1 bg-argos-green/50 h-[40px] -translate-x-1/2"></div>
+                    
+                    {/* Horizontal Line connecting all SVPs */}
+                    <div className="absolute top-[-40px] left-[calc(25%+32px)] right-[calc(25%+32px)] h-1 bg-argos-green/50"></div>
+                    
+                    {/* Vertical Lines down to each SVP */}
+                    {organizationStructure
+                      .filter(member => member.level === 2)
+                      .map((_, index, arr) => {
+                        const width = 100 / arr.length;
+                        const leftPosition = `calc(${width/2 + width * index}% - 0.5px)`;
+                        return (
+                          <div 
+                            key={index} 
+                            className="absolute w-1 bg-argos-green/50 h-[40px]" 
+                            style={{ top: "-40px", left: leftPosition }}
+                          ></div>
+                        );
+                      })}
+                    
                     {organizationStructure
                       .filter(member => member.level === 2)
                       .map((member, index) => (
-                        <Card key={index} className="w-60 bg-white">
+                        <Card key={index} className="w-60 bg-white relative z-10" id={member.id}>
                           <CardContent className="p-6 text-center">
                             <h4 className="font-semibold text-lg text-argos-navy mb-2">{member.name}</h4>
                             <p className="text-argos-green">{member.title}</p>
@@ -393,13 +495,77 @@ const About = () => {
                   </div>
                 </div>
                 
-                {/* Department Heads */}
-                <div>
-                  <div className="flex flex-wrap justify-center gap-6">
+                {/* Director Level - Level 3 */}
+                <div className="mb-16 relative">
+                  <div className="flex flex-wrap justify-center gap-6 relative">
+                    {/* Horizontal Line connecting all Directors */}
+                    <div className="absolute top-[-40px] left-[80px] right-[80px] h-1 bg-argos-green/50"></div>
+                    
+                    {/* Vertical Lines connecting each Director to the respective SVP */}
+                    {organizationStructure
+                      .filter(member => member.level === 3)
+                      .map((member, index, arr) => {
+                        // Find the parent SVP's index position to align connection
+                        const parentIndex = organizationStructure
+                          .filter(m => m.level === 2)
+                          .findIndex(m => m.id === member.reportTo);
+                        
+                        // Calculate parent's horizontal position
+                        const parentCount = organizationStructure.filter(m => m.level === 2).length;
+                        const parentWidth = 100 / parentCount;
+                        const parentLeftPosition = `calc(${parentWidth/2 + parentWidth * parentIndex}% - 0.5px)`;
+                        
+                        // Calculate current element's position
+                        const width = 100 / arr.length;
+                        const leftPosition = `calc(${width/2 + width * index}% - 0.5px)`;
+                        
+                        return (
+                          <div key={index} className="relative">
+                            <div 
+                              className="absolute w-1 bg-argos-green/50 h-[40px]" 
+                              style={{ top: "-40px", left: `calc(50% - 0.5px)` }}
+                            ></div>
+                          </div>
+                        );
+                      })}
+                    
                     {organizationStructure
                       .filter(member => member.level === 3)
                       .map((member, index) => (
-                        <Card key={index} className="w-56 bg-white">
+                        <Card key={index} className="w-56 bg-white relative z-10" id={member.id}>
+                          <CardContent className="p-6 text-center">
+                            <h4 className="font-semibold text-lg text-argos-navy mb-2">{member.name}</h4>
+                            <p className="text-argos-green">{member.title}</p>
+                          </CardContent>
+                        </Card>
+                      ))}
+                  </div>
+                </div>
+                
+                {/* Manager Level - Level 4 */}
+                <div className="relative">
+                  <div className="flex flex-wrap justify-center gap-6 relative">
+                    {/* Horizontal Line connecting all Managers */}
+                    <div className="absolute top-[-40px] left-[80px] right-[80px] h-1 bg-argos-green/50"></div>
+                    
+                    {/* Vertical Lines connecting each Manager */}
+                    {organizationStructure
+                      .filter(member => member.level === 4)
+                      .map((member, index, arr) => {
+                        return (
+                          <div key={index} className="relative">
+                            <div 
+                              className="absolute w-1 bg-argos-green/50 h-[40px]" 
+                              style={{ top: "-40px", left: `calc(50% - 0.5px)` }}
+                            ></div>
+                          </div>
+                        );
+                      })}
+                    
+                    {organizationStructure
+                      .filter(member => member.level === 4)
+                      .map((member, index) => (
+                        <Card key={index} className="w-52 bg-white relative z-10" id={member.id}>
                           <CardContent className="p-6 text-center">
                             <h4 className="font-semibold text-lg text-argos-navy mb-2">{member.name}</h4>
                             <p className="text-argos-green">{member.title}</p>
