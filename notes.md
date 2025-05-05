@@ -18,7 +18,16 @@ argosltdbd@gmail.com
 
 +8802-41060883/5
 
+01335973112 rice mill
+
+01336985440 noakhali
+
 # domain credentials
 
 email: argosltd@gmail.com
 password:Sa0560835671
+
+# TODO
+
+1. add biogas project
+1. 2025 er moddhe future project green block

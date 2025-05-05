@@ -53,7 +53,7 @@ const Navbar = () => {
 							className="flex items-center hover:text-white/80 transition-colors"
 						>
 							<Phone className="h-4 w-4 mr-1" />
-							<span>+8802-41060883</span>
+							<span>+8802-41060883/5</span>
 						</a>
 					</div>
 					<div className="w-full md:w-auto flex justify-center md:justify-end">

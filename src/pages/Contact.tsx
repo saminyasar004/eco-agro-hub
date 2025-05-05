@@ -3,6 +3,7 @@ import PageHeader from "../components/ui-custom/PageHeader";
 import ContactForm from "../components/ui-custom/ContactForm";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 const Contact = () => {
 	const contactInfo = [
@@ -18,7 +19,7 @@ const Contact = () => {
 		{
 			icon: Phone,
 			title: "Phone Numbers",
-			details: ["+8802-41060883", "+8802-41060884", "+8802-41060885"],
+			details: ["+8802-41060883/5"],
 		},
 		{
 			icon: Mail,
@@ -127,12 +128,21 @@ const Contact = () => {
 
 			<section className="pb-16">
 				<div className="container mx-auto px-4">
-					<h2 className="text-2xl font-semibold text-argos-navy mb-6">
-						Branch Office
-					</h2>
+					<div className="w-full flex justify-between">
+						<h2 className="text-2xl font-semibold text-argos-navy mb-6">
+							Branch Office
+						</h2>
+
+						<div className="flex items-center">
+							<Button>
+								<Phone className="text-white" />
+								<a href="tel:+8801335973112">+88 01335973112</a>
+							</Button>
+						</div>
+					</div>
 					<div className="rounded-xl overflow-hidden shadow-md border border-border reveal-on-scroll">
 						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14534.264059673571!2d88.92622472828448!3d24.396396245889026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fc11deae572e65%3A0x29a2d8f5ded4eeb9!2sEkdala!5e0!3m2!1sen!2sbd!4v1746427664294!5m2!1sen!2sbd"
+							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14533.500857802625!2d88.952691!3d24.403029!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fc117b23a728a9%3A0x83ca043c67afce7b!2sSadik%20Agrochemicals%20Co.%20Ltd.!5e0!3m2!1sen!2sbd!4v1746447217162!5m2!1sen!2sbd"
 							width="100%"
 							height="450"
 							style={{ border: 0 }}
@@ -147,12 +157,21 @@ const Contact = () => {
 
 			<section className="pb-16">
 				<div className="container mx-auto px-4">
-					<h2 className="text-2xl font-semibold text-argos-navy mb-6">
-						Production & Factory Office
-					</h2>
+					<div className="w-full flex justify-between">
+						<h2 className="text-2xl font-semibold text-argos-navy mb-6">
+							Production & Factory Office
+						</h2>
+
+						<div className="flex items-center">
+							<Button>
+								<Phone className="text-white" />
+								<a href="tel:+8801336985440">+88 01336985440</a>
+							</Button>
+						</div>
+					</div>
 					<div className="rounded-xl overflow-hidden shadow-md border border-border reveal-on-scroll">
 						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58858.23102738875!2d91.02686224863282!3d22.7787584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3754af0c419e042f%3A0x5efff95c9cd03273!2sNoakhali%20Bangla%20Bazar!5e0!3m2!1sen!2sbd!4v1746427986533!5m2!1sen!2sbd"
+							src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d8513.67647900967!2d91.07713931706554!3d22.786494968893976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjLCsDQ3JzM2LjciTiA5McKwMDUnMDEuOSJF!5e0!3m2!1sen!2sbd!4v1746446426240!5m2!1sen!2sbd"
 							width="100%"
 							height="450"
 							style={{ border: 0 }}

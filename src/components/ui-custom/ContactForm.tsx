@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useForm, ValidationError } from "@formspree/react";
 
 const ContactForm = () => {
+	const [state, handleSubmit] = useForm("mdkggewj");
 	const { toast } = useToast();
 	const [formData, setFormData] = useState({
 		name: "",
@@ -21,14 +23,12 @@ const ContactForm = () => {
 		setFormData((prev) => ({ ...prev, [name]: value }));
 	};
 
-	const handleClick = (
-		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-	) => {
-		// e.preventDefault();
-		setLoading(true);
+	useEffect(() => {
+		setLoading(state.submitting);
+	}, [state.submitting]);
 
-		// Simulate form submission
-		setTimeout(() => {
+	useEffect(() => {
+		if (state.succeeded) {
 			toast({
 				title: "Message Sent!",
 				description:
@@ -42,34 +42,11 @@ const ContactForm = () => {
 				subject: "",
 				message: "",
 			});
-		}, 1500);
-	};
+		}
+	}, [state.succeeded]);
 
 	return (
-		<form
-			// onSubmit={handleSubmit}
-			className="space-y-6 h-full"
-			action="https://api.web3forms.com/submit"
-			method="POST"
-		>
-			<input
-				type="hidden"
-				name="access_key"
-				value="50aca6da-2c71-4bf1-9e7b-c277240ce108"
-			/>
-
-			<input
-				type="hidden"
-				name="apikey"
-				value="50aca6da-2c71-4bf1-9e7b-c277240ce108"
-			/>
-
-			<input
-				type="hidden"
-				name="redirect"
-				value="https://web3forms.com/success"
-			/>
-
+		<form onSubmit={handleSubmit} className="space-y-6 h-full">
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 				<div>
 					<label
@@ -86,6 +63,11 @@ const ContactForm = () => {
 						onChange={handleChange}
 						className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-argos-green focus:border-argos-green transition-colors"
 						required
+					/>
+					<ValidationError
+						prefix="Name"
+						field="name"
+						errors={state.errors}
 					/>
 				</div>
 				<div>
@@ -104,10 +86,14 @@ const ContactForm = () => {
 						className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-argos-green focus:border-argos-green transition-colors"
 						required
 					/>
+					<ValidationError
+						prefix="Email"
+						field="email"
+						errors={state.errors}
+					/>
 				</div>
 			</div>
 
-			{/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> */}
 			<div>
 				<label
 					htmlFor="phone"
@@ -122,6 +108,11 @@ const ContactForm = () => {
 					value={formData.phone}
 					onChange={handleChange}
 					className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-argos-green focus:border-argos-green transition-colors"
+				/>
+				<ValidationError
+					prefix="Phone"
+					field="phone"
+					errors={state.errors}
 				/>
 			</div>
 			<div>
@@ -151,7 +142,6 @@ const ContactForm = () => {
 					<option value="Other">Other</option>
 				</select>
 			</div>
-			{/* </div> */}
 
 			<div>
 				<label
@@ -169,12 +159,16 @@ const ContactForm = () => {
 					className="w-full h-full min-h-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-argos-green focus:border-argos-green transition-colors"
 					required
 				></textarea>
+				<ValidationError
+					prefix="Message"
+					field="message"
+					errors={state.errors}
+				/>
 			</div>
 
 			<button
-				onClick={handleClick}
 				type="submit"
-				disabled={loading}
+				disabled={state.submitting}
 				className="btn-primary w-full md:w-auto min-w-[150px] flex items-center justify-center"
 			>
 				{loading ? (

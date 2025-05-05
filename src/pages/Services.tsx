@@ -21,13 +21,22 @@ import {
 	Search,
 	Wheat,
 	Refrigerator,
+	Globe,
 } from "lucide-react";
 import ColdStorage from "../assets/img/cold-storage.png";
 import IrrigationSolution from "../assets/img/irrigation-solutions-1.jpg";
 import SeedlingProduction from "../assets/img/seedling-production.jpeg";
 import FisheriesManagement from "../assets/img/fisheries-1.jpg";
 import TreeManagement from "../assets/img/tree-management.jpg";
-import RiceMill from "../assets/img/rice-mill-1.jpeg";
+import RiceMill1 from "../assets/img/rice-mill-1.jpeg";
+import RiceMill2 from "../assets/img/rice-mill-2.jpg";
+import RiceMill3 from "../assets/img/rice-mill-3.jpg";
+import RiceField2 from "../assets/img/rice-field-1.jpg";
+import RiceField3 from "../assets/img/rice-field-3.jpg";
+import RiceField4 from "../assets/img/rice-field-4.jpg";
+import RiceField5 from "../assets/img/rice-field-5.jpg";
+import AgriEquipment1 from "../assets/img/agri-equipment-1.jpg";
+import Greenhouse1 from "../assets/img/greenhouse-1.jpeg";
 
 const Services = () => {
 	// Main services with expanded descriptions
@@ -73,8 +82,15 @@ const Services = () => {
 			description:
 				"Access to a wide range of modern agricultural machinery including tractors, harvesters, planters, and irrigation equipment. Our rental program makes advanced farming equipment accessible to farmers of all scales without the high capital investment of ownership.",
 			icon: Tractor,
-			imageSrc:
-				"https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?q=80&w=800",
+			imageSrc: AgriEquipment1,
+		},
+		{
+			id: "biogas-greenhouse",
+			title: "Biogas & Greenhouse Projects",
+			description:
+				"Innovative biogas systems and climate-controlled greenhouses designed for Bangladesh's tropical climate, helping farmers reduce fossil fuel dependence and increase year-round production.",
+			icon: Globe,
+			imageSrc: Greenhouse1,
 		},
 		{
 			id: "irrigation-solutions",
@@ -114,7 +130,7 @@ const Services = () => {
 			description:
 				"State-of-the-art rice processing facilities located across multiple districts in Bangladesh. Our mills offer cleaning, husking, milling, polishing, and packaging services with emphasis on quality preservation and minimum breakage.",
 			icon: Wheat,
-			imageSrc: RiceMill,
+			imageSrc: RiceMill1,
 		},
 	];
 
@@ -310,6 +326,93 @@ const Services = () => {
 				</div>
 			</section>
 
+			{/* Biogas & Greenhouse Section */}
+			<section className="section-padding bg-gradient-to-r from-argos-green/10 to-argos-navy/5">
+				<div className="container mx-auto px-4">
+					<SectionHeading
+						title="Biogas & Greenhouse Solutions"
+						subtitle="Innovative renewable energy and controlled environment agriculture for Bangladesh's changing climate"
+						centered
+					/>
+
+					<div className="bg-white rounded-xl p-8 shadow-md mb-8">
+						<div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+							<div className="rounded-xl overflow-hidden">
+								<img
+									src={Greenhouse1}
+									alt="Biogas and greenhouse facility"
+									className="w-full h-auto"
+								/>
+							</div>
+							<div>
+								<h3 className="text-2xl font-display font-bold mb-4 text-argos-navy">
+									Sustainable Energy & Growing Solutions
+								</h3>
+								<p className="mb-4 text-muted-foreground">
+									Our integrated biogas and greenhouse
+									solutions are specifically designed for
+									Bangladesh's unique agricultural landscape,
+									helping farmers reduce dependence on fossil
+									fuels while maximizing crop production
+									year-round despite climate challenges.
+								</p>
+								<ul className="space-y-3 mb-6">
+									<li className="flex items-start">
+										<div className="bg-argos-green/10 p-1 rounded-full mr-2 mt-1">
+											<Globe className="h-4 w-4 text-argos-green" />
+										</div>
+										<span>
+											Small to medium-scale biogas
+											digesters converting agricultural
+											waste into cooking fuel and
+											electricity
+										</span>
+									</li>
+									<li className="flex items-start">
+										<div className="bg-argos-green/10 p-1 rounded-full mr-2 mt-1">
+											<Globe className="h-4 w-4 text-argos-green" />
+										</div>
+										<span>
+											Climate-controlled greenhouse
+											structures adapted for Bangladesh's
+											tropical monsoon climate
+										</span>
+									</li>
+									<li className="flex items-start">
+										<div className="bg-argos-green/10 p-1 rounded-full mr-2 mt-1">
+											<Globe className="h-4 w-4 text-argos-green" />
+										</div>
+										<span>
+											Integrated systems with
+											nutrient-rich biogas slurry
+											fertilizing greenhouse crops
+										</span>
+									</li>
+									<li className="flex items-start">
+										<div className="bg-argos-green/10 p-1 rounded-full mr-2 mt-1">
+											<Globe className="h-4 w-4 text-argos-green" />
+										</div>
+										<span>
+											Government-subsidized installations
+											available for rural communities and
+											smallholder farmers
+										</span>
+									</li>
+								</ul>
+								<Button
+									asChild
+									className="bg-argos-green hover:bg-argos-green/90 text-white"
+								>
+									<Link to="/contact">
+										Learn About Implementation
+									</Link>
+								</Button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
 			{/* Processing Facilities Section */}
 			<section className="section-padding bg-gradient-to-r from-argos-green/10 to-argos-navy/10">
 				<div className="container mx-auto px-4">
@@ -321,6 +424,39 @@ const Services = () => {
 
 					<div className="bg-white rounded-xl p-8 shadow-md mb-8">
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+							<div className="grid grid-cols-2 gap-4 reveal-on-scroll">
+								<div className="space-y-4">
+									<img
+										src={RiceField5}
+										alt="About Argos Industries"
+										className="rounded-lg h-auto w-full object-cover shadow-md"
+										style={{ height: "220px" }}
+									/>
+
+									<img
+										src={RiceField3}
+										alt="About Argos Industries"
+										className="rounded-lg h-auto w-full object-cover shadow-md"
+										style={{ height: "160px" }}
+									/>
+								</div>
+
+								<div className="space-y-4 pt-6">
+									<img
+										src={RiceMill2}
+										alt="About Argos Industries"
+										className="rounded-lg h-auto w-full object-cover shadow-md"
+										style={{ height: "160px" }}
+									/>
+									<img
+										src={RiceMill1}
+										alt="About Argos Industries"
+										className="rounded-lg h-auto w-full object-cover shadow-md"
+										style={{ height: "220px" }}
+									/>
+								</div>
+							</div>
+
 							<div>
 								<h3 className="text-2xl font-display font-bold mb-4 text-argos-navy">
 									Rice Mills & Processing Centers
@@ -372,13 +508,6 @@ const Services = () => {
 										</span>
 									</li>
 								</ul>
-							</div>
-							<div className="rounded-xl overflow-hidden">
-								<img
-									src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=800"
-									alt="Rice processing facility"
-									className="w-full h-auto"
-								/>
 							</div>
 						</div>
 					</div>

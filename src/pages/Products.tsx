@@ -16,9 +16,13 @@ import {
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import AgriEquipment1 from "../assets/img/agri-equipment-1.jpg";
 import AgriEquipment2 from "../assets/img/agriculture-equipment-2.jpg";
+import AqualCultureFeed from "../assets/img/aquaculture-feed.jpeg";
 import Fisheries1 from "../assets/img/fisheries-1.jpg";
 import Fisheries2 from "../assets/img/fisheries-2.jpg";
 import Pesticide1 from "../assets/img/pesticide-1.jpg";
+import CattleFarm2 from "../assets/img/cattle-farm-2.jpeg";
+import TreeFarming1 from "../assets/img/tree-farming-1.jpeg";
+import Pesticide2 from "../assets/img/pesticide-2.jpeg";
 
 const Products = () => {
 	// Product categories
@@ -109,7 +113,7 @@ const Products = () => {
 				"High-quality feed formulated for optimal fish growth and health",
 			category: "fisheries",
 			price: 42.99,
-			imageSrc: AgriEquipment2,
+			imageSrc: AqualCultureFeed,
 		},
 		{
 			id: "fishing-nets",
@@ -128,8 +132,7 @@ const Products = () => {
 				"High-milk-yield dairy cattle breeds adapted to local climate conditions",
 			category: "farming",
 			price: 1299.99,
-			imageSrc:
-				"https://images.unsplash.com/photo-1465379944081-7f47de8d74ac?q=80&w=800",
+			imageSrc: CattleFarm2,
 		},
 		{
 			id: "fruit-tree-saplings",
@@ -138,8 +141,7 @@ const Products = () => {
 				"Quality fruit tree saplings for establishing productive orchards",
 			category: "farming",
 			price: 34.99,
-			imageSrc:
-				"https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=800",
+			imageSrc: TreeFarming1,
 		},
 		// New pesticides products
 		{
@@ -149,8 +151,7 @@ const Products = () => {
 				"Environmentally friendly pesticide for effective pest control without harmful chemicals",
 			category: "pesticides",
 			price: 39.99,
-			imageSrc:
-				"https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=800",
+			imageSrc: Pesticide2,
 		},
 		{
 			id: "insect-repellent",
@@ -267,7 +268,7 @@ const Products = () => {
 								</div>
 								<div className="bg-argos-green/5 p-4 rounded-lg">
 									<h3 className="font-semibold text-argos-navy mb-2">
-										Equipment Rental
+										Agricultural Equipment Rental
 									</h3>
 									<p className="text-sm">
 										Access modern agricultural equipment
