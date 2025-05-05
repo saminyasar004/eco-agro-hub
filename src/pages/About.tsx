@@ -1,10 +1,10 @@
-
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/ui-custom/PageHeader";
 import SectionHeading from "../components/ui-custom/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { CheckCircle2, Users, Globe, Award, Target, Clock } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 const About = () => {
   // Company values
@@ -30,7 +30,7 @@ const About = () => {
       icon: CheckCircle2
     }
   ];
-
+  
   // Timeline items
   const timelineItems = [
     {
@@ -62,6 +62,62 @@ const About = () => {
       year: "2023",
       title: "Digital Agriculture",
       description: "Introduced advanced digital farming solutions incorporating AI and IoT technology for precision agriculture."
+    }
+  ];
+
+  // Organization structure
+  const organizationStructure = [
+    {
+      name: "John Anderson",
+      title: "Chief Executive Officer",
+      level: 1
+    },
+    {
+      name: "Maria Rodriguez",
+      title: "Head of Research & Development",
+      level: 2
+    },
+    {
+      name: "David Chen",
+      title: "Director of Sustainability",
+      level: 2
+    },
+    {
+      name: "Sarah Johnson",
+      title: "Chief Financial Officer",
+      level: 2
+    },
+    {
+      name: "Michael Wong",
+      title: "Head of Operations",
+      level: 2
+    },
+    {
+      name: "Aisha Patel",
+      title: "Marketing Director",
+      level: 3
+    },
+    {
+      name: "Robert Lee",
+      title: "Head of Product Development",
+      level: 3
+    },
+    {
+      name: "Priya Sharma",
+      title: "HR Director",
+      level: 3
+    },
+    {
+      name: "James Wilson",
+      title: "Board Chairman",
+      level: 0,
+      isBoard: true
+    },
+    {
+      name: "Elena Garcia",
+      title: "Board Member",
+      level: 0,
+      isBoard: true
     }
   ];
 
@@ -258,7 +314,7 @@ const About = () => {
             ].map((member, index) => (
               <div 
                 key={index} 
-                className="bg-white rounded-xl shadow-md overflow-hidden border border-border reveal-on-scroll"
+                className="bg-white rounded-xl shadow-md overflow-hidden border border-border"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="h-64 overflow-hidden">
@@ -277,13 +333,83 @@ const About = () => {
             ))}
           </div>
           
-          <div className="text-center mt-12">
-            <Button asChild variant="outline" className="mx-auto">
-              <Link to="/team">
-                <Users className="h-4 w-4 mr-2" />
-                View Full Team
-              </Link>
-            </Button>
+          <div className="mt-16">
+            <SectionHeading 
+              title="Our Team"
+              subtitle="The complete organizational structure of Argos Industries"
+              centered
+            />
+            
+            <div className="mt-12">
+              {/* Organization Chart */}
+              <div className="organization-chart">
+                {/* Board of Directors */}
+                <div className="mb-12">
+                  <h3 className="text-2xl font-display font-bold text-argos-navy mb-6 text-center">Board of Directors</h3>
+                  <div className="flex justify-center gap-6">
+                    {organizationStructure
+                      .filter(member => member.isBoard)
+                      .map((member, index) => (
+                        <Card key={index} className="w-64 bg-white border-argos-navy/20">
+                          <CardContent className="p-6 text-center">
+                            <h4 className="font-semibold text-lg text-argos-navy mb-2">{member.name}</h4>
+                            <p className="text-argos-green">{member.title}</p>
+                          </CardContent>
+                        </Card>
+                      ))}
+                  </div>
+                </div>
+                
+                {/* Executive Leadership */}
+                <div className="mb-8">
+                  <h3 className="text-2xl font-display font-bold text-argos-navy mb-6 text-center">Executive Leadership</h3>
+                  <div className="flex justify-center mb-8">
+                    {organizationStructure
+                      .filter(member => member.level === 1)
+                      .map((member, index) => (
+                        <Card key={index} className="w-64 bg-white border-argos-green">
+                          <CardContent className="p-6 text-center">
+                            <h4 className="font-semibold text-lg text-argos-navy mb-2">{member.name}</h4>
+                            <p className="text-argos-green">{member.title}</p>
+                          </CardContent>
+                        </Card>
+                      ))}
+                  </div>
+                </div>
+                
+                {/* Directors */}
+                <div className="mb-8">
+                  <div className="flex flex-wrap justify-center gap-6">
+                    {organizationStructure
+                      .filter(member => member.level === 2)
+                      .map((member, index) => (
+                        <Card key={index} className="w-60 bg-white">
+                          <CardContent className="p-6 text-center">
+                            <h4 className="font-semibold text-lg text-argos-navy mb-2">{member.name}</h4>
+                            <p className="text-argos-green">{member.title}</p>
+                          </CardContent>
+                        </Card>
+                      ))}
+                  </div>
+                </div>
+                
+                {/* Department Heads */}
+                <div>
+                  <div className="flex flex-wrap justify-center gap-6">
+                    {organizationStructure
+                      .filter(member => member.level === 3)
+                      .map((member, index) => (
+                        <Card key={index} className="w-56 bg-white">
+                          <CardContent className="p-6 text-center">
+                            <h4 className="font-semibold text-lg text-argos-navy mb-2">{member.name}</h4>
+                            <p className="text-argos-green">{member.title}</p>
+                          </CardContent>
+                        </Card>
+                      ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
