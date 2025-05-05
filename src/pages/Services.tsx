@@ -1,3 +1,4 @@
+
 import Layout from "../components/layout/Layout";
 import PageHeader from "../components/ui-custom/PageHeader";
 import ServiceCard from "../components/ui-custom/ServiceCard";
@@ -21,7 +22,10 @@ import {
   GraduationCap,
   Search,
   Wheat,
-  Refrigerator
+  Refrigerator,
+  Globe,
+  Biogas,
+  Greenhouse
 } from "lucide-react";
 
 const Services = () => {
@@ -96,6 +100,13 @@ const Services = () => {
       description: "State-of-the-art rice processing facilities located across multiple districts in Bangladesh. Our mills offer cleaning, husking, milling, polishing, and packaging services with emphasis on quality preservation and minimum breakage.",
       icon: Wheat,
       imageSrc: "https://images.unsplash.com/photo-1469041797191-50ace28483c3?q=80&w=800"
+    },
+    {
+      id: "biogas-greenhouse",
+      title: "Biogas & Greenhouse Projects",
+      description: "Innovative biogas systems that convert agricultural waste into clean, renewable energy for Bangladesh's rural communities. Our integrated greenhouse technologies enable year-round cultivation and climate control, optimized for Bangladesh's tropical monsoon climate and small-scale farming operations.",
+      icon: Globe,
+      imageSrc: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800"
     }
   ];
   
@@ -243,6 +254,64 @@ const Services = () => {
                   alt="Modern cold storage facility" 
                   className="w-full h-full object-cover"
                 />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Biogas & Greenhouse Section */}
+      <section className="section-padding bg-gradient-to-r from-argos-green/10 to-argos-navy/5">
+        <div className="container mx-auto px-4">
+          <SectionHeading 
+            title="Biogas & Greenhouse Solutions"
+            subtitle="Innovative renewable energy and controlled environment agriculture for Bangladesh's changing climate"
+            centered
+          />
+          
+          <div className="bg-white rounded-xl p-8 shadow-md mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div className="rounded-xl overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800" 
+                  alt="Biogas and greenhouse facility" 
+                  className="w-full h-auto"
+                />
+              </div>
+              <div>
+                <h3 className="text-2xl font-display font-bold mb-4 text-argos-navy">Sustainable Energy & Growing Solutions</h3>
+                <p className="mb-4 text-muted-foreground">
+                  Our integrated biogas and greenhouse solutions are specifically designed for Bangladesh's unique agricultural landscape, helping farmers reduce dependence on fossil fuels while maximizing crop production year-round despite climate challenges.
+                </p>
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start">
+                    <div className="bg-argos-green/10 p-1 rounded-full mr-2 mt-1">
+                      <Globe className="h-4 w-4 text-argos-green" />
+                    </div>
+                    <span>Small to medium-scale biogas digesters converting agricultural waste into cooking fuel and electricity</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="bg-argos-green/10 p-1 rounded-full mr-2 mt-1">
+                      <Globe className="h-4 w-4 text-argos-green" />
+                    </div>
+                    <span>Climate-controlled greenhouse structures adapted for Bangladesh's tropical monsoon climate</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="bg-argos-green/10 p-1 rounded-full mr-2 mt-1">
+                      <Globe className="h-4 w-4 text-argos-green" />
+                    </div>
+                    <span>Integrated systems with nutrient-rich biogas slurry fertilizing greenhouse crops</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="bg-argos-green/10 p-1 rounded-full mr-2 mt-1">
+                      <Globe className="h-4 w-4 text-argos-green" />
+                    </div>
+                    <span>Government-subsidized installations available for rural communities and smallholder farmers</span>
+                  </li>
+                </ul>
+                <Button asChild className="bg-argos-green hover:bg-argos-green/90 text-white">
+                  <Link to="/contact">Learn About Implementation</Link>
+                </Button>
               </div>
             </div>
           </div>

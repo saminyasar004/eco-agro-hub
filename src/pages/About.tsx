@@ -3,7 +3,7 @@ import PageHeader from "../components/ui-custom/PageHeader";
 import SectionHeading from "../components/ui-custom/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { CheckCircle2, Users, Globe, Award, Target, Clock } from "lucide-react";
+import { CheckCircle2, Users, Globe, Award, Target, Clock, Brick, BrickWall } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const About = () => {
@@ -282,6 +282,76 @@ const About = () => {
                 We implement crop rotation, integrated pest management, and water conservation practices to ensure 
                 the continued productivity of our agricultural lands for generations to come.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Future Project - Eco-Friendly Bricks */}
+      <section className="section-padding bg-white">
+        <div className="container mx-auto px-4">
+          <SectionHeading 
+            title="Future Project: Eco-Friendly Bricks"
+            subtitle="Our commitment to sustainable construction materials for Bangladesh's future"
+            centered
+          />
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-12">
+            <div className="reveal-on-scroll">
+              <h3 className="text-2xl font-display font-bold mb-4 text-argos-navy">Green Brick Initiative</h3>
+              <p className="text-lg text-muted-foreground mb-6">
+                Starting in 2025, Argos Industries is launching an ambitious initiative to replace conventional 
+                clay bricks with eco-friendly hollow bricks across Bangladesh. This project addresses the serious 
+                environmental challenges posed by traditional brick manufacturing, which contributes significantly 
+                to Bangladesh's air pollution and topsoil degradation.
+              </p>
+              <div className="bg-argos-green/10 p-6 rounded-xl mb-6">
+                <h4 className="font-semibold text-argos-navy mb-3">Environmental Impact</h4>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li className="flex items-start">
+                    <div className="bg-argos-green/20 p-1 rounded-full mr-2 mt-1">
+                      <CheckCircle2 className="h-4 w-4 text-argos-green" />
+                    </div>
+                    <span>70% reduction in carbon emissions compared to traditional brick kilns</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="bg-argos-green/20 p-1 rounded-full mr-2 mt-1">
+                      <CheckCircle2 className="h-4 w-4 text-argos-green" />
+                    </div>
+                    <span>Preserves valuable agricultural topsoil by using alternative materials</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="bg-argos-green/20 p-1 rounded-full mr-2 mt-1">
+                      <CheckCircle2 className="h-4 w-4 text-argos-green" />
+                    </div>
+                    <span>Uses 40% recycled construction waste in production process</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="bg-argos-green/20 p-1 rounded-full mr-2 mt-1">
+                      <CheckCircle2 className="h-4 w-4 text-argos-green" />
+                    </div>
+                    <span>Reduces water consumption in manufacturing by 60%</span>
+                  </li>
+                </ul>
+              </div>
+              <p className="text-lg text-muted-foreground">
+                Our eco-friendly hollow bricks offer superior insulation, reducing energy costs for heating and 
+                cooling while maintaining structural integrity. With government partnerships and subsidies, we aim 
+                to make these sustainable building materials accessible and affordable for construction projects 
+                throughout Bangladesh, supporting the country's climate goals while creating green manufacturing jobs.
+              </p>
+              <div className="mt-6">
+                <Button asChild className="bg-argos-green hover:bg-argos-green/90 text-white">
+                  <Link to="/contact">Learn More About Our Green Brick Initiative</Link>
+                </Button>
+              </div>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-lg border border-border reveal-on-scroll">
+              <img 
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800" 
+                alt="Eco-friendly hollow bricks" 
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
         </div>

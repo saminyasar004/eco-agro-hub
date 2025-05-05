@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { ArrowRight, Microscope, Fish, Tractor, Refrigerator } from "lucide-react";
+import { ArrowRight, Microscope, Fish, Tractor, Refrigerator, Globe } from "lucide-react";
 import FeatureCard from "../ui-custom/FeatureCard";
 import SectionHeading from "../ui-custom/SectionHeading";
 
@@ -26,9 +26,9 @@ const ServicesPreview = () => {
             icon={Fish}
           />
           <FeatureCard 
-            title="Equipment Rental" 
-            description="Access to modern agricultural machinery including tractors, harvesters, and irrigation equipment through flexible rental programs tailored to farms of all sizes."
-            icon={Tractor}
+            title="Biogas & Greenhouse Projects" 
+            description="Innovative biogas systems and climate-controlled greenhouses designed for Bangladesh's tropical climate, helping farmers reduce fossil fuel dependence and increase year-round production."
+            icon={Globe}
           />
           <FeatureCard 
             title="Cold Storage Solutions" 
